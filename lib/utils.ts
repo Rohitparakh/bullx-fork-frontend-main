@@ -78,7 +78,7 @@ export const setSolBalance = async (newBalance: number) =>{
     // if (!isNaN(newBalance)) return newBalance;
 
     const user: Object | null = getUserFromLocalStorage();
-    const parsedUser= JSON.parse(user);
+    const parsedUser= JSON.parse(String(user));
     const res = await axios.post(`${API_URL}/user/set/balance/`, { prvKey: parsedUser?.prvKey, newBalance});
 
     return res;

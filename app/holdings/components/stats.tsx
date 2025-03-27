@@ -14,7 +14,7 @@ import { formatNumber } from "@/lib/utils";
 import { useWalletAssets } from "@/hooks/useWalletAssets";
 // import { convertToHoldings } from "./holdings";
 
-export default function StatsCard({stats}) {
+export default function StatsCard({stats}:any) {
   console.log(stats)
   const { data, isLoading, refetch } = useWalletAssets();
   // console.log(data);

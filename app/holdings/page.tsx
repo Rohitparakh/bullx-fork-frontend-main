@@ -10,8 +10,8 @@ import { useWalletAssets } from "@/hooks/useWalletAssets";
 export default function Page() {
 
   const { data, isLoading, refetch } = useWalletAssets();
-  const[tableData, setTableData] = useState([]);
-  const[overviewData, setOverviewData] = useState([]);
+  const[tableData, setTableData] = useState<Holding[]>([]);
+  const[overviewData, setOverviewData] = useState<OverallStats | null>(null);
     
 
 interface Trade {
@@ -52,6 +52,32 @@ interface OverallStats {
   totalSoldUsd: number;
   totalSoldSol: number;
   overallPnlPercentage: number;
+}
+
+interface Holding {
+  token: string;
+  invested: number;
+  info: {
+    address: string;
+  };
+  chainSymbol: string;
+  remaining: {
+    parent: number; // USD value of remaining tokens
+    token: number; // Tokens left
+  };
+  bought: {
+    parent: number; // Total amount invested in USD
+    token: number; // Tokens bought initially
+  };
+  sold: {
+    parent: number; // Total USD earned from sales
+    token: number; // Total tokens sold
+  };
+  change: {
+    percentage: number;
+    amount: number;
+  };
+  type: "Holding" | "Sold"; // Assigning type directly as Holding or Sold
 }
 
 

@@ -103,7 +103,7 @@ import { useEffect, useState } from "react";
 
 
 
-export default function Holdings({tableData}) {
+export default function Holdings({tableData}:any) {
     const { data, isLoading, refetch } = useWalletAssets();
     // const[tableData, setTableData] = useState([])
     // const[tableData, setTableData] = useState([])

@@ -29,11 +29,17 @@ export default function TrendingData() {
 
   // Fetch trending data
   const { createdData, isLoading, refetch } = useTrending(timeframe);
-  const [pairs, setPairs] = useState<Pair[]>(createdData); // Initialize with API data
+  const [pairs, setPairs] = useState<Pair[]>([]); // Initialize with API data
 
   // Function to update pairs when data changes (Avoid unnecessary state updates)
+  // useEffect(() => {
+  //   if (createdData.length !== pairs.length) {
+  //     setPairs(createdData);
+  //   }
+  // }, [createdData]);
   useEffect(() => {
-    if (createdData.length !== pairs.length) {
+    if (createdData && createdData.length !== pairs.length) {
+      // @ts-ignore
       setPairs(createdData);
     }
   }, [createdData]);

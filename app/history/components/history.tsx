@@ -48,7 +48,7 @@ import { ArrowUpDown } from "lucide-react";
 // };
 
 
-export const convertToHistory = (tradeHistory:any, solPrice:any) => {
+export const convertToHistory = (tradeHistory:any, solPrice:any): History[] => {
     return tradeHistory.map((trade:any) => {
       return {
         token: trade.symbol,
@@ -67,6 +67,20 @@ export const convertToHistory = (tradeHistory:any, solPrice:any) => {
   };
   
 
+
+  type History = {
+    token: string;
+    trade_type: string; // Add this
+    info: {
+      address: string;
+    };
+    chainSymbol: string;
+    tokens: number;
+    priceSOL: number;
+    priceUSD: number;
+    time: string;
+  };
+  
 
 export default function History() {
     const { data, isLoading, refetch } = useWalletAssets();
