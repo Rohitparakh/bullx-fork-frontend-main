@@ -82,8 +82,8 @@ export default function HeroContent() {
         <div className="flex gap-2 hero-buttons mt-8">
           <Link
             // href={`${BOT_URL}?start=${firstRenderValue.current}`}
-            // href={`/get-started`}
-            href={`/new-pairs`}
+            href={`/get-started`}
+            // href={`/new-pairs`}
             // target="_blank"
           >
             <HoverBorderGradient className="flex items-center gap-2 bg-[#8c003e] text-white hover:text-ton-blue-300 transition-all duration-1000  border-[#8c003e]">
