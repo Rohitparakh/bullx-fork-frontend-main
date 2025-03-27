@@ -43,7 +43,7 @@ export default function SectionTitle({
 
   const handleBalanceInput = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {      
-      const res = await setSolBalance(balanceInput)
+      const res = await setSolBalance(Number(balanceInput))
       console.log("Res: ",res)
       if (res?.status != 200){
         toast.error("Error occured");

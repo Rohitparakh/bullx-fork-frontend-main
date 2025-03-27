@@ -69,7 +69,7 @@ export default function Page() {
 
           <div className="block md:justify-between md:flex h-[calc(100%-80px)] object-fill">
             <div className="flex flex-col gap-2 h-full md:mr-2 md:w-[calc(100%-350px)] self-stretch">
-            {tokenData && (
+            {/* {tokenData && (
   <>
     {tokenData.data.marketCap !== "N/A" && (
       <div>Market Cap: {tokenData.data.marketCap}</div>
@@ -87,7 +87,7 @@ export default function Page() {
       <div>Total Holders: {tokenData.data.holders}</div>
     )}
   </>
-)}
+)} */}
 
 
 
