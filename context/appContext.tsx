@@ -19,7 +19,7 @@ interface AppContextType {
   token: Token | undefined;
   setToken: (value: Token ) => void;
   user: User | undefined;
-  setUser: (value: User) => void;
+  setUser: (value: User | undefined) => void;
   privateKey: string | undefined;
   setPrivateKey: (value: string | undefined) => void;
   publicKey: string | undefined;
