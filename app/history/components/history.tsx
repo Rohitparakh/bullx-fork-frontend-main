@@ -48,8 +48,8 @@ import { ArrowUpDown } from "lucide-react";
 // };
 
 
-export const convertToHistory = (tradeHistory, solPrice) => {
-    return tradeHistory.map((trade) => {
+export const convertToHistory = (tradeHistory:any, solPrice:any) => {
+    return tradeHistory.map((trade:any) => {
       return {
         token: trade.symbol,
         trade_type: trade.tradeType, // BUY or SELL
