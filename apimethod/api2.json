@@ -1,0 +1,24 @@
+{
+  "name": "getNewPairs",
+  "data": {
+    "chainIds": [1399811149, 56, 42161, 81457, 8453],
+    "poolCreationBlockTimestamp": 1729716424,
+    "filters": {
+      "Top 10 Holders": false,
+      "With at least 1 social": false,
+      "B.Curve %": { "percentage": true },
+      "Dev holding %": { "percentage": true },
+      "Holders": {},
+      "Liquidity": { "dollar": true },
+      "Volume": { "dollar": true },
+      "Market Cap": { "dollar": true },
+      "Txns": {},
+      "Buys": {},
+      "Sells": {},
+      "Token Age (mins)": {},
+      "pumpFunEnabled": true,
+      "moonshotTokenEnabled": true,
+      "isAboutToGraduate": true
+    }
+  }
+}

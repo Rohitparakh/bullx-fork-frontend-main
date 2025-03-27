@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::-webkit-scrollbar {
+    @apply flex touch-none select-none transition-colors h-full w-2 border-l border-l-transparent;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply relative flex-1 rounded-full bg-[#8c003e];
+  }
+}
+
+@layer utilities {
+  .glass {
+    backdrop-filter: blur(64px) saturate(100%);
+    -webkit-backdrop-filter: blur(60px) saturate(100%);
+  }
+
+  .hero-buttons {
+    animation-name: hero-buttons;
+    animation-duration: 1s;
+    animation-fill-mode: forward;
+    animation-timing-function: ease-in-out;
+  }
+
+  .hero-text {
+    animation-name: hero-text;
+    animation-duration: 1s;
+    animation-fill-mode: forward;
+    animation-timing-function: ease-in-out;
+  }
+
+  .write-vertical {
+    writing-mode: vertical-lr;
+    rotate: 180deg;
+  }
+
+  .text-invert {
+    mix-blend-mode: difference;
+    filter: invert(1);
+  }
+
+  a.styled {
+    @apply leading-none underline underline-offset-2 transition-all duration-150 ease-in-out;
+  }
+  a.styled:hover {
+    @apply bg-foreground text-background decoration-foreground;
+  }
+}
+
+@keyframes hero-text {
+  from {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    transform: translateY(0%);
+    opacity: 100;
+  }
+}
+@keyframes hero-buttons {
+  from {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    transform: translateY(0%);
+    opacity: 100;
+  }
+}
