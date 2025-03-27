@@ -104,7 +104,7 @@ export default function GetStarted() {
       <CardHeader>
         <CardTitle>Start Trading</CardTitle>
         <CardDescription>
-          This is your wallet's private key. Trade using this wallet.
+          This is your wallet&#39;s private key. Trade using this wallet.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col lg:flex-row gap-8">
