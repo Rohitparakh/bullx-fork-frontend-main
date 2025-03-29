@@ -36,14 +36,10 @@ export default function HeroContent() {
       if (data.code === firstRenderValue.current) {
         setUser(data.user);
         if (
-          typeof user?.userName === "string" &&
-          typeof user?.userId === "string" &&
           typeof user?.prvKey === "string" &&
           typeof user?.pubKey === "string"
         ) {
           if ( typeof localStorage != 'undefined') {
-            localStorage.setItem("userName", user.userName);
-            localStorage.setItem("userId", user.userId);
             localStorage.setItem("prvKey", user.prvKey);
             localStorage.setItem("pubKey", user.pubKey);
           }
