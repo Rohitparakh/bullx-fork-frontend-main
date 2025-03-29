@@ -69,25 +69,65 @@ export default function Page() {
 
           <div className="block md:justify-between md:flex h-[calc(100%-80px)] object-fill">
             <div className="flex flex-col gap-2 h-full md:mr-2 md:w-[calc(100%-350px)] self-stretch">
-            {/* {tokenData && (
-  <>
-    {tokenData.data.marketCap !== "N/A" && (
-      <div>Market Cap: {tokenData.data.marketCap}</div>
-    )}
-    {tokenData.data.volume !== "N/A" && (
-      <div>24H Volume: {tokenData.data.volume}</div>
-    )}
-    {tokenData.data.price !== "N/A" && (
-      <div>Price: {tokenData.data.price}</div>
-    )}
-    {tokenData.data.totalSupply !== "N/A" && (
-      <div>Total Supply: {tokenData.data.totalSupply}</div>
-    )}
-    {tokenData.data.holders !== "N/A" && (
-      <div>Total Holders: {tokenData.data.holders}</div>
-    )}
-  </>
-)} */}
+            {tokenData && (
+              <div className="flex flex-wrap gap-4 text-gray-900 dark:text-white">
+  {tokenData.data.marketCap !== "N/A" && (
+    <div className="text-lg font-semibold">
+      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Market Cap: </span>
+      {formatNumber(Number(tokenData.data.marketCap)).combined}
+    </div>
+  )}
+
+  {tokenData.data.volume !== "N/A" && (
+    <div className="text-lg font-semibold">
+      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">24H Volume: </span>
+      {formatNumber(Number(tokenData.data.volume)).combined}
+    </div>
+  )}
+
+  {tokenData.data.price !== "N/A" && (
+    <div className="text-lg font-semibold">
+      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Price: </span>
+      {tokenData.data.price}
+    </div>
+  )}
+
+  {tokenData.data.totalSupply !== "N/A" && (
+    <div className="text-lg font-semibold">
+      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Supply: </span>
+      {formatNumber(Number(tokenData.data.totalSupply)).combined}
+    </div>
+  )}
+
+  {tokenData.data.holders !== "N/A" && (
+    <div className="text-lg font-semibold">
+      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Total Holders: </span>
+      {formatNumber(Number(tokenData.data.holders)).combined}
+    </div>
+  )}
+</div>
+//   <>
+//     { tokenData.data.marketCap !== "N/A" && (
+//   <div>
+//     Market Cap: {formatNumber(Number(tokenData.data.marketCap)).combined}
+//   </div>
+// )}
+
+
+//     {tokenData.data.volume !== "N/A" && (
+//       <div>24H Volume: {formatNumber(Number(tokenData.data.volume)).combined}</div>
+//     )}
+//     {tokenData.data.price !== "N/A" && (
+//       <div>Price: {tokenData.data.price}</div>
+//     )}
+//     {tokenData.data.totalSupply !== "N/A" && (
+//       <div>Total Supply: {formatNumber(Number(tokenData.data.totalSupply)).combined}</div>
+//     )}
+//     {tokenData.data.holders !== "N/A" && (
+//       <div>Total Holders: {formatNumber(Number(tokenData.data.holders)).combined}</div>
+//     )}
+//   </>
+)}
 
 
 

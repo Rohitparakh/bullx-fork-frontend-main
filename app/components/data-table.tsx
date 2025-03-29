@@ -56,6 +56,7 @@ export function DataTable<TData, TValue>({
       name: data?.info?.name,
     };
     setToken(token);
+    console.log(token)
     router.push(`/detail/${data.info.address}`);
   };
 

@@ -344,7 +344,7 @@ console.log(data?.tokenList)
 // console.log(holdings)
   return (
     <div className="w-full max-h-full flex">
-      {tableData?.length>0 && <DataTable data={tableData} columns={columns} />}
+      {tableData && tableData?.length>0 && <DataTable data={tableData} columns={columns} />}
     </div>
   );
 }
