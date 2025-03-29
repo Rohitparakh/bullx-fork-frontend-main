@@ -45,6 +45,7 @@ export default function SectionTitle({
     if (e.key === "Enter") {      
       const res = await setSolBalance(Number(balanceInput))
       console.log("Res: ",res)
+    // @ts-ignore
       if ( res?.success === false ||  res?.status != 200){
         toast.error("Error occured");
       } else{
