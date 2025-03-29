@@ -7,8 +7,6 @@ type Token = {
 };
 
 interface User {
-  userId?: string | null ;
-  userName?: string | null;
   pubKey?: string | null;
   prvKey?: string | null;
   solBalance?: number | null;

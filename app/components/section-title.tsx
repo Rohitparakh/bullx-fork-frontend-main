@@ -45,7 +45,7 @@ export default function SectionTitle({
     if (e.key === "Enter") {      
       const res = await setSolBalance(Number(balanceInput))
       console.log("Res: ",res)
-      if ( res === false ||  res?.status != 200){
+      if ( res?.success === false ||  res?.status != 200){
         toast.error("Error occured");
       } else{
         toast.success("Changed your SOL balance")
