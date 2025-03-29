@@ -80,7 +80,7 @@ export const setSolBalance = async (newBalance: number) =>{
     const user: Object | null = getUserFromLocalStorage();
     // @ts-ignore
     const parsedUser= JSON.parse(user);
-    const res = await axios.post(`${API_URL}/user/set/balance/`, { prvKey: parsedUser?.prvKey, newBalance});
+    const res = await axios.post(`${API_URL}/user/set/balance`, { prvKey: parsedUser?.prvKey, newBalance});
 
     return res;
   } catch(error) {
