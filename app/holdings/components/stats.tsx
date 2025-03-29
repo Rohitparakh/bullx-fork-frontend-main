@@ -37,7 +37,7 @@ const [val, setVal] = useState<HoldingStats>({
 });
 
 useEffect(()=>{
-  if(stats!= null || stats!=undefined || stats.length==0){
+  if(stats!= null || stats!=undefined || stats?.length==0){
     setVal({
     cumPnL: stats?.overallPnlPercentage?stats?.overallPnlPercentage:0,
     totalValue: (stats?.totalInvestedUsd+stats?.totalSoldUsd)>0?stats?.totalInvestedUsd+stats?.totalSoldUsd:0,

@@ -253,7 +253,7 @@ useEffect(() => {
         />
 	<StatsCard stats={overviewData} />
         <div className="h-[200vh] lg:overflow-hidden grow flex flex-col lg:flex-row gap-4">
-          {tableData && tableData.length>0 && <Holdings tableData={tableData} />}
+          {tableData && tableData?.length>0 && <Holdings tableData={tableData} />}
         </div>
       </div>
     </main>
