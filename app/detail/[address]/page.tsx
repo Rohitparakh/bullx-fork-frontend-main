@@ -85,12 +85,12 @@ export default function Page() {
     </div>
   )}
 
-  {tokenData.data.price !== "N/A" && (
+  {/* {tokenData.data.price !== "N/A" && (
     <div className="text-lg font-semibold">
       <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Price: </span>
       {tokenData.data.price}
     </div>
-  )}
+  )} */}
 
   {tokenData.data.totalSupply !== "N/A" && (
     <div className="text-lg font-semibold">
