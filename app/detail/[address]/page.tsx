@@ -74,14 +74,14 @@ export default function Page() {
   {tokenData.data.marketCap !== "N/A" && (
     <div className="text-lg font-semibold">
       <span className="text-sm font-medium text-gray-500 dark:text-gray-400">Market Cap: </span>
-      {formatNumber(Number(tokenData.data.marketCap)).combined}
+      ${formatNumber(Number(tokenData.data.marketCap)).combined}
     </div>
   )}
 
   {tokenData.data.volume !== "N/A" && (
     <div className="text-lg font-semibold">
       <span className="text-sm font-medium text-gray-500 dark:text-gray-400">24H Volume: </span>
-      {formatNumber(Number(tokenData.data.volume)).combined}
+      ${formatNumber(Number(tokenData.data.volume)).combined}
     </div>
   )}
 
