@@ -65,6 +65,7 @@ export default function SectionTitle({
   return (
     <div>
       <div className="lg:hidden pb-4">
+        <div className="flex gap-5">
         <Button
           variant="outline"
           className="flex gap-2"
@@ -72,6 +73,23 @@ export default function SectionTitle({
         >
           <IoMenu /> Menu
         </Button>
+        <div
+            className={
+              "flex lg:hidden h-10 w-full rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#8c003e] dark:bg-transparent dark:ring-offset-neutral-950 dark:placeholder:text-neutral-400 dark:focus-visible:ring-neutral-300 items-center glass"
+            }
+          >
+            <FaSearch className="text-[#8c003e]" />
+            <Input
+              className="!border-none !ring-0 !outline-0 !ring-offset-0 !bg-transparent"
+              placeholder="Search by token"
+              value={search}
+              onKeyDown={handleKeyDown}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+          </div>
+          </div>
         {isMenuOpen && (
           <div className="z-10 h-full w-full fixed top-0 right-0 left-0">
             <DashboardNav
@@ -123,7 +141,7 @@ export default function SectionTitle({
             <FaSearch className="text-[#8c003e]" />
             <Input
               className="!border-none !ring-0 !outline-0 !ring-offset-0 !bg-transparent"
-              placeholder="Search by token or LP count."
+              placeholder="Search by token"
               value={search}
               onKeyDown={handleKeyDown}
               onChange={(e) => {
