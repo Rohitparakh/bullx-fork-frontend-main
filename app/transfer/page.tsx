@@ -8,11 +8,12 @@ export default function Page() {
     <main className="px-4 bg-background lg:h-screen lg:flex gap-4">
       <DashboardNav />
       <div className="pt-8 pb-4 grow h-screen flex flex-col gap-4">
-        <SectionTitle name="Transfer" desc="Withdraw or deposit funds." />
+        {/* <SectionTitle name="Transfer" desc="Withdraw or deposit funds." /> */}
+        <SectionTitle name="Change Balance" desc=""/>
         <CardsTabbed />
-        <div className="lg:overflow-hidden grow flex gap-4">
+        {/* <div className="lg:overflow-hidden grow flex gap-4">
           <History />
-        </div>
+        </div> */}
       </div>
     </main>
   );

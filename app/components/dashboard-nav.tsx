@@ -156,7 +156,7 @@ export default function DashboardNav({
                   </DropdownMenuItem>
                 </Link> */}
                 <Link href="/transfer">
-                  <DropdownMenuItem className="flex gap-2">
+                  <DropdownMenuItem className="lg:hidden gap-2 flex">
                     <RiFundsFill /> Change Balance
                   </DropdownMenuItem>
                 </Link>
