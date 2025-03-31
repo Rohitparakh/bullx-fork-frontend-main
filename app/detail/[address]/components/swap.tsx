@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo } from "react";
+import { useCallback, useState, useMemo, useEffect } from "react";
 import { useToken } from "@/hooks/useToken";
 import { useUser } from "@/hooks/useUser";
 import { sendTrade } from "@/lib/api";
@@ -29,11 +29,16 @@ export default function Swap({ address }: SwapProps) {
     return currentToken ? currentToken.amount : 0;
   }, [data]);
 
+  useEffect(()=>{
+    setAmount(isBuy?1:0)
+  },[isBuy])
+
   const trade = useCallback(async () => {
     if (!user?.prvKey) return;
     setIsTrading(true); // Disable button while trading
     await sendTrade(token?.mintAddress, amount, user?.prvKey, isBuy);
     await refetch(); // Fetch updated balance
+    setAmount(isBuy?1:0)
     setIsTrading(false); // Enable button after refetch
   }, [token, user, amount, isBuy]);
 
