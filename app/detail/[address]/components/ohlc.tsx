@@ -58,10 +58,7 @@ export default function ChartComponent(props: any) {
     chart.applyOptions({
       localization: {
           priceFormatter: myPriceFormatter,
-      },
-      rightPriceScale: {
-        visible: false 
-      },
+      }
   });
   // candlestickSeries.setMarkers([
   //   {
@@ -121,13 +118,13 @@ export default function ChartComponent(props: any) {
       </div> */}
 
       <div className="border-ton-blue-900" ref={chartContainerRef} />
-      {data.length > 0 && (
+      {/* {data.length > 0 && (
     <div
       className="absolute top-4 right-4 bg-black text-white px-2 py-1 rounded z-[99]"
     >
       ${data[data.length - 1].close}
     </div>
-  )}
+  )} */}
     </div>
   )
 }
