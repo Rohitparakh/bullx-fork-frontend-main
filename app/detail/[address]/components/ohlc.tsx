@@ -59,11 +59,25 @@ export default function ChartComponent(props: any) {
       localization: {
           priceFormatter: myPriceFormatter,
       },
+      rightPriceScale: {
+        visible: false 
+      },
   });
+  // candlestickSeries.setMarkers([
+  //   {
+  //     time: data[data.length - 1].time, // Place marker at the latest price
+  //     position: "aboveBar",
+  //     color: "#8c003e",
+  //     shape: "circle",
+  //     text: `$${data[data.length - 1].close}`, // Custom price label inside chart
+  //   },
+  // ]);
+  
     candlestickSeries.createPriceLine(myPriceLine);
     candlestickSeries.setData(data);
     candlestickSeries.priceScale().applyOptions({
       autoScale: true, // disables auto scaling based on visible content
+      // position: 'left'
     });
     chart.timeScale().fitContent();
     chart.timeScale().applyOptions({
@@ -107,6 +121,13 @@ export default function ChartComponent(props: any) {
       </div> */}
 
       <div className="border-ton-blue-900" ref={chartContainerRef} />
+      {data.length > 0 && (
+    <div
+      className="absolute top-4 right-4 bg-black text-white px-2 py-1 rounded z-[99]"
+    >
+      ${data[data.length - 1].close}
+    </div>
+  )}
     </div>
   )
 }

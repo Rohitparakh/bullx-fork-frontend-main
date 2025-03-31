@@ -41,7 +41,7 @@ export default function TokenDetail({data}:any) {
 
   return (
     <div className="flex-1  overflow-auto h-1/2">
-      <table className="min-w-full text-left table-auto border-collapse overflow-scroll">
+      <table className="min-w-full max-w-[100vw] text-left table-auto border-collapse overflow-scroll">
         <thead className="sticky top-0">
           <tr className="bg-gray-800 text-white">
             <th className="p-2">Time</th>
