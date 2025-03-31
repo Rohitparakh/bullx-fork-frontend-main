@@ -95,7 +95,7 @@ useEffect(() => {
           Settings
         </Button> */}
       </div>
-      <div className="lg:flex pb-12 h-full flex-row">
+      <div className="lg:flex pb-12 h-full flex-row max-md:w-[calc(100vw_-_32px)]">
         <DataTable columns={columns} data={pairs} />
       </div>
     </div>

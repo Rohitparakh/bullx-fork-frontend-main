@@ -95,14 +95,15 @@ export function DataTable<TData, TValue>({
                     handleSelectRow(row.original);
                   }}
                 >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                  {row.getVisibleCells().map((cell) => {
+                    return(
+                    <TableCell key={cell.id} className={cell.id.includes("auditResult")?"max-md:min-w-[200px]":""}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
                       )}
                     </TableCell>
-                  ))}
+                  )})}
                 </TableRow>
               );
             })

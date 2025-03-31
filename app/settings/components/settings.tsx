@@ -62,7 +62,7 @@ export default function Settings() {
   return (
     <Card>
     <CardContent className="my-8 pb-0">
-      <div className="mb-4 flex items-center">
+      <div className="mb-4 flex items-center whitespace-pre-line break-all">
         <span>Public Key: {user?.pubKey}</span>
         <button
           className="ml-2 p-1"
@@ -71,9 +71,9 @@ export default function Settings() {
           <Clipboard size={18} />
         </button>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <span>Private Key: </span>
-        <span className="ml-2">
+        <span className="ml-2 whitespace-pre-line break-all">
           {showPrivateKey ? user?.prvKey : "••••••••"}
         </span>
         <button
