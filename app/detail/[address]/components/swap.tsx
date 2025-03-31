@@ -1,6 +1,4 @@
-import { useCallback, useState, useMemo, useEffect } from "react";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { transparent } from "tailwindcss/colors";
+import { useCallback, useState, useMemo } from "react";
 import { useToken } from "@/hooks/useToken";
 import { useUser } from "@/hooks/useUser";
 import { sendTrade } from "@/lib/api";
@@ -13,60 +11,56 @@ interface SwapProps {
   address: string | undefined;
 }
 
-export default function Swap({address}:SwapProps) {
+export default function Swap({ address }: SwapProps) {
   const { setUser } = useAppContext();
   const token = useToken();
   const user = useUser();
   const router = useRouter();
   const [amount, setAmount] = useState<number>(0);
   const [isBuy, setIsBuy] = useState<boolean>(true);
+  const [isTrading, setIsTrading] = useState<boolean>(false); // Track trade status
   const { data, isLoading, refetch } = useWalletAssets();
+
   const tokenBalance = useMemo(() => {
     if (!data) return 0;
     const currentToken = data.tokenList.find(
       (item: any) => item.mint == token?.mintAddress
     );
-    if (currentToken) return currentToken?.amount;
-    else return 0;
+    return currentToken ? currentToken.amount : 0;
   }, [data]);
 
-  const trade = useCallback(() => {
-    if (user?.prvKey)
-      sendTrade(token?.mintAddress, amount, user?.prvKey, isBuy);
+  const trade = useCallback(async () => {
+    if (!user?.prvKey) return;
+    setIsTrading(true); // Disable button while trading
+    await sendTrade(token?.mintAddress, amount, user?.prvKey, isBuy);
+    await refetch(); // Fetch updated balance
+    setIsTrading(false); // Enable button after refetch
   }, [token, user, amount, isBuy]);
 
   return (
     <div className="md:w-80 w-full gap-2 mt-4 md:mt-0 md:mx-2 mb-2 box-border items-center rounded-3xl flex flex-col h-full p-6 bg-neutral-950 glass border border-[#8c003e] overflow-auto">
       <div className="flex justify-around gap-2 w-full">
-        {/* <HoverBorderGradient className="flex items-center gap-2 hover:text-ton-blue-300 transition-all duration-1000 text-ton-blue-200"> */}
         <button
           className={`px-8 py-2 rounded-md border ${
             isBuy ? `border-[#8c003e]` : `border-transparent`
           }`}
-          onClick={() => {
-            setIsBuy(true);
-          }}
+          onClick={() => setIsBuy(true)}
         >
           Buy
         </button>
-        {/* </HoverBorderGradient> */}
-
-        {/* <HoverBorderGradient className="flex items-center gap-2 hover:text-ton-blue-300 transition-all duration-1000 text-ton-blue-200"> */}
         <button
           className={`px-8 py-2 rounded-md border ${
             !isBuy ? `border-[#8c003e]` : `border-transparent`
           }`}
-          onClick={() => {
-            setIsBuy(false);
-          }}
+          onClick={() => setIsBuy(false)}
         >
           Sell
         </button>
-        {/* </HoverBorderGradient> */}
       </div>
+      
       <div className="flex items-center bg-transparent text-white p-[1px] m-2 border border-[#8c003e] rounded-md w-full">
-        <label htmlFor="amount" className="font text-sm text-gray-400 px-1">
-          {isBuy?"SOL":"Tokens"}
+        <label htmlFor="amount" className="text-sm text-gray-400 px-1">
+          {isBuy ? "SOL" : "Tokens"}
         </label>
         <input
           type="number"
@@ -74,95 +68,41 @@ export default function Swap({address}:SwapProps) {
           className="bg-transparent border-none text-sm outline-none text-white p-1 rounded-md w-full"
           placeholder="0"
           value={amount}
-          onChange={(e: any) => setAmount(e.target.value)}
+          onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
         />
       </div>
+
+      {/* Preset Buttons */}
       {isBuy ? (
         <div className="flex w-full justify-between m-2">
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(0);
-            }}
-          >
-            reset
-          </button>
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(0.1);
-            }}
-          >
-            0.1 SOL
-          </button>
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(0.5);
-            }}
-          >
-            0.5 SOL
-          </button>
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(1);
-            }}
-          >
-            1 SOL
-          </button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(0)}>Reset</button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(0.1)}>0.1 SOL</button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(0.5)}>0.5 SOL</button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(1)}>1 SOL</button>
         </div>
       ) : (
         <div className="flex w-full justify-between m-2">
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(0);
-            }}
-          >
-            reset
-          </button>
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(tokenBalance * 0.25);
-            }}
-          >
-            25%
-          </button>
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(tokenBalance * 0.5);
-            }}
-          >
-            50%
-          </button>
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(tokenBalance * 0.75);
-            }}
-          >
-            75%
-          </button>
-          <button
-            className="px-1.5 text-white bg-black rounded-md"
-            onClick={() => {
-              setAmount(tokenBalance);
-            }}
-          >
-            100%
-          </button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(0)}>Reset</button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(tokenBalance * 0.25)}>25%</button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(tokenBalance * 0.5)}>50%</button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(tokenBalance * 0.75)}>75%</button>
+          <button className="px-1.5 text-white bg-black rounded-md" onClick={() => setAmount(tokenBalance)}>100%</button>
         </div>
       )}
+
+      {/* Trade Button */}
       <button
-        className=" bg-[#8c003e] w-full text-white rounded-md p-2 m-2 hover:bg-ton-blue-700 "
+        className={`bg-[#8c003e] w-full text-white rounded-md p-2 m-2 
+          hover:bg-ton-blue-700 transition ${
+            isTrading || isLoading ? "bg-gray-400 cursor-not-allowed" : ""
+          }`}
         onClick={trade}
+        disabled={isTrading || isLoading} // Disable when trading or loading
       >
-        Trade
+        {isTrading ? "Processing..." : "Trade"}
       </button>
-      <Wallet address={address}/>
+
+      <Wallet address={address} />
     </div>
   );
 }

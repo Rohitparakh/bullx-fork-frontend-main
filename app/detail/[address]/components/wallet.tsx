@@ -15,8 +15,8 @@ export default function Wallet({address}:WalletProps) {
   const { data, isLoading, refetch } = useWalletAssets();
   const [state, setState] = useState<boolean>(true);
   let positionData = (data?.tokenList.find((item:any) => item.mint ===token?.mintAddress))
-  console.log(data?.tokenList)
-  console.log(address)
+  // console.log(data?.tokenList)
+  // console.log(address)
   return (
     <>
       {data && (

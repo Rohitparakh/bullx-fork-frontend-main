@@ -10,7 +10,7 @@ export const useWalletAssets = () => {
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["fetchWalletAssets", user?.prvKey],
     queryFn: () => fetchWalletAssets(user?.prvKey),
-    refetchInterval: 100,
+    refetchInterval: 1,
   });
 
   // console.log(JSON.stringify(data))

@@ -4,7 +4,7 @@ import { useToken } from "./useToken";
 
 export const useFetchTokenData = () => {
     const token = useToken();    
-    console.log(token)
+    // console.log(token)
     const { data, isLoading, refetch } = useQuery({
         queryKey: ['fetchTokenData', token?.mintAddress],
         queryFn: () => fetchTokenData(token?.mintAddress),

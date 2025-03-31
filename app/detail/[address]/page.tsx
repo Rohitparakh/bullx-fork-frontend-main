@@ -22,8 +22,8 @@ export default function Page() {
   const { token, setToken, setUser } = useAppContext();
   const { data, isLoading, refetch } = useFetchTokenDetails();
   const { data:tokenData, isLoading:tokenDataisLoading, refetch:tokenDataRefetch } = useFetchTokenData();
-  console.log("Token Data:")
-  console.log(tokenData)
+  // console.log("Token Data:")
+  // console.log(tokenData)
   const addressRef = useRef<string | undefined>();
   const [tokenAddress, setTokenAddress] = useState<string | undefined>("");
   const params = useParams();

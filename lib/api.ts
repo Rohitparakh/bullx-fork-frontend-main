@@ -9,8 +9,8 @@ export const fetchTokenDetails = async (mintAddress: string | undefined) => {
     const { data } = await axios.get(
       `${API_URL}/pumpfun/token?mintAddress=${mintAddress}`
     );
-    console.log("Token Details:")
-    console.log(data)
+    // console.log("Token Details:")
+    // console.log(data)
     return data;
   } catch (error) {
     console.log(error);
@@ -24,8 +24,8 @@ export const fetchTokenData = async (mintAddress: string | undefined) => {
     const { data } = await axios.get(
       `${API_URL}/tokenData/${mintAddress}`
     );
-    console.log("Token Data Fetch:")
-    console.log(data)
+    // console.log("Token Data Fetch:")
+    // console.log(data)
     return data;
   } catch (error) {
     console.log(error);
@@ -50,7 +50,7 @@ export const sendTrade = async (
   prvKey: string | undefined,
   isBuy: boolean
 ) => {
-  console.log({mint, amount, prvKey, isBuy}, "GGGGGGGGGGG")
+  console.log({mint, amount, prvKey, isBuy})
   try {
     const res = await axios.post(`${API_URL}/trade`, {
       mint,
