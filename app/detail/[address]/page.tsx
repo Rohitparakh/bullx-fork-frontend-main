@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "@/app/components/section-title";
 import TokenDetail from "./components/token-detail";

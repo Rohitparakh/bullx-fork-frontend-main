@@ -6,6 +6,9 @@ const nextConfig = {
         hostname: "**",
       },
     ],
+  },  
+  experimental: {
+    appDir: true, // Enables the new App Router
   },
 };
 

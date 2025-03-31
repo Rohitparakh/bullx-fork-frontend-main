@@ -93,7 +93,7 @@ export default function Swap({address}:SwapProps) {
               setAmount(0.1);
             }}
           >
-            0.1sol
+            0.1 SOL
           </button>
           <button
             className="px-1.5 text-white bg-black rounded-md"
@@ -101,7 +101,7 @@ export default function Swap({address}:SwapProps) {
               setAmount(0.5);
             }}
           >
-            0.5sol
+            0.5 SOL
           </button>
           <button
             className="px-1.5 text-white bg-black rounded-md"
@@ -109,7 +109,7 @@ export default function Swap({address}:SwapProps) {
               setAmount(1);
             }}
           >
-            1sol
+            1 SOL
           </button>
         </div>
       ) : (

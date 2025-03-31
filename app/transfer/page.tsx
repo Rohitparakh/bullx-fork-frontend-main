@@ -1,3 +1,4 @@
+"use client"
 import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "../components/section-title";
 import CardsTabbed from "../leaderboard/components/tabs";

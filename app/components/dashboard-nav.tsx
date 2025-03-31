@@ -110,7 +110,7 @@ export default function DashboardNav({
     <div className={"hidden lg:block h-full py-4 w-64 " + className}>
       <div
         className={
-          "rounded-3xl flex flex-col gap-8 h-full p-6 bg-neutral-950 glass border border-[#8c003e] " +
+          "rounded-3xl flex flex-col gap-8 h-[100vh] p-6 bg-neutral-950 glass border border-[#8c003e] " +
           innerClassName
         }
       >
@@ -125,7 +125,7 @@ export default function DashboardNav({
         <div className="flex flex-col gap-4 h-full justify-between">
           <div className="w-full flex flex-col gap-2">
             {navigation.map((n, i) => (
-              <Link prefetch href={n.route} key={i} className="w-full">
+              <Link prefetch={true} href={n.route} key={i} className="w-full">
                 <Button
                   variant="ghost"
                   className="w-full !justify-start text-ton-blue-200 hover:!bg-ton-blue-800/20 hover:glass hover:!text-ton-blue-300 flex gap-2"
@@ -155,12 +155,12 @@ export default function DashboardNav({
                     <FaLink /> Referrals
                   </DropdownMenuItem>
                 </Link> */}
-                <Link href="/transfer">
+                <Link href="/transfer" prefetch={true}>
                   <DropdownMenuItem className="lg:hidden gap-2 flex">
                     <RiFundsFill /> Change Balance
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/settings">
+                <Link href="/settings" prefetch={true}>
                   <DropdownMenuItem className="flex gap-2">
                     <IoSettingsSharp /> Settings
                   </DropdownMenuItem>

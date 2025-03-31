@@ -77,6 +77,7 @@ export default function HeroContent() {
         </h1> */}
         <div className="flex gap-2 hero-buttons mt-8">
           <Link
+          prefetch={true}
             // href={`${BOT_URL}?start=${firstRenderValue.current}`}
             href={`/get-started`}
             // href={`/new-pairs`}
