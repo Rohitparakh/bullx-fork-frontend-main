@@ -66,7 +66,7 @@ export default function Swap({address}:SwapProps) {
       </div>
       <div className="flex items-center bg-transparent text-white p-[1px] m-2 border border-[#8c003e] rounded-md w-full">
         <label htmlFor="amount" className="font text-sm text-gray-400 px-1">
-          SOL
+          {isBuy?"SOL":"Tokens"}
         </label>
         <input
           type="number"
