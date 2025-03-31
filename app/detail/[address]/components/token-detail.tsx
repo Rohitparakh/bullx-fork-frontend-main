@@ -40,7 +40,7 @@ export default function TokenDetail({data}:any) {
   });
 
   return (
-    <div className="flex-1  overflow-auto h-1/2">
+    <div className="flex-1  overflow-auto h-1/2 max-md:max-w-[calc(100vw_-_32px)]">
       <table className="min-w-full max-w-[100vw] text-left table-auto border-collapse overflow-scroll">
         <thead className="sticky top-0">
           <tr className="bg-gray-800 text-white">
