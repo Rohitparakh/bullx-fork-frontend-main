@@ -49,8 +49,9 @@ export const sendTrade = async (
   amount: number,
   prvKey: string | undefined,
   isBuy: boolean
-) => {
-  console.log({mint, amount, prvKey, isBuy})
+): Promise<{ success: boolean; message?: string }> => {
+  console.log({ mint, amount, prvKey, isBuy });
+
   try {
     const res = await axios.post(`${API_URL}/trade`, {
       mint,
@@ -58,18 +59,50 @@ export const sendTrade = async (
       prvKey,
       isBuy,
     });
-    if (res.data.success) toast.success("Trade success");
-    else {
+
+    if (res.data.success) {
+      return { success: true, message: "Trade successful" };
+    } else {
       console.log(res.data.msg);
-      toast.error(res.data.error);
-      return false;
+      return { success: false, message: res.data.msg || "Trade failed" };
     }
-  } catch (error) {
-    console.log(error);
-    toast.error("Error occurred");
-    return false;
+  } catch (error: any) {
+    console.log(error?.response?.data?.message || error.message);
+    return { success: false, message: error?.response?.data?.message || "An error occurred" };
   }
 };
+
+// export const sendTrade = async (
+//   mint: string | undefined,
+//   amount: number,
+//   prvKey: string | undefined,
+//   isBuy: boolean
+// ) => {
+//   console.log({mint, amount, prvKey, isBuy})
+//   try {
+//     const res = await axios.post(`${API_URL}/trade`, {
+//       mint,
+//       amount,
+//       prvKey,
+//       isBuy,
+//     });
+//     if (res.data.success) {
+//       return { success: true}
+//       // toast.success("Trade success");
+//     }
+//     else {
+
+//       console.log(res.data.msg);
+//       // toast.error(res.data.error);
+//       return {success:false};
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     // toast.error("Error occurred");
+//     return {success:false};
+
+//   }
+// };
 
 export const fetchWalletAssets = async (
   prvKey: string | undefined | null

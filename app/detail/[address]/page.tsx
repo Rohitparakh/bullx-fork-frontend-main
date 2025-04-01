@@ -135,7 +135,7 @@ export default function Page() {
               {data && <ChartComponent data={ohlcData} />}
               <TokenDetail data={data} />
             </div>
-            <Swap address={tokenAddress} />
+            <Swap address={tokenAddress} tokenData={data} />
           </div>
         </div>
       </main>
