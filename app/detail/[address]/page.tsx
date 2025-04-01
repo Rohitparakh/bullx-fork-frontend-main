@@ -22,8 +22,9 @@ export default function Page() {
   const { token, setToken, setUser } = useAppContext();
   const { data, isLoading, refetch } = useFetchTokenDetails();
   const { data:tokenData, isLoading:tokenDataisLoading, refetch:tokenDataRefetch } = useFetchTokenData();
-  // console.log("Token Data:")
-  // console.log(tokenData)
+  console.log("Token Data:")
+  console.log(data)
+  console.log(tokenData)
   const addressRef = useRef<string | undefined>();
   const [tokenAddress, setTokenAddress] = useState<string | undefined>("");
   const params = useParams();
@@ -63,7 +64,7 @@ export default function Page() {
             />
             <SectionTitle
               name={data?.data.name || ""}
-              desc="This is the token traded in the PUMPFUN"
+              desc={`${data?.data.source?`This is the token traded in the ${data.data.source}`:""}`}
             />
           </div>
 
