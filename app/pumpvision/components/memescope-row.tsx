@@ -21,7 +21,7 @@ export default function MemescopeRow({ datum }: { datum: MemescopeItem }) {
   return (
     <div
       onClick={() => handleSelect(datum.address)}
-      className="cursor-pointer flex justify-between flex-wrap items-center px-4 py-4 gap-3 border-b border-ton-blue-950/30"
+      className="cursor-pointer flex justify-between max-md:flex-nowrap flex-wrap items-center px-4 py-4 gap-3 border-b border-ton-blue-950/30"
     >
       <div className="flex gap-3">
         <div className="w-[58px] h-[58px] rounded-full">
