@@ -48,23 +48,42 @@ import { ArrowUpDown } from "lucide-react";
 // };
 
 
-export const convertToHistory = (tradeHistory:any, solPrice:any): History[] => {
-    return tradeHistory.map((trade:any) => {
-      return {
-        token: trade.symbol,
-        trade_type: trade.tradeType, // BUY or SELL
-        info: {
-          address: trade.mint,
-        },
-        chainSymbol: "SOL",
-        tokens: trade.amount, // Number of tokens
-        priceSOL: trade.priceSol,
-        priceUSD: trade.priceUsd,        
-        time: new Date(trade.tradeDate).toLocaleString(), // Trade timestamp
-        type: trade.tradeType,
-      };
-    });
-  };
+// export const convertToHistory = (tradeHistory:any, solPrice:any): History[] => {
+//     return tradeHistory.map((trade:any) => {
+//       return {
+//         token: trade.symbol,
+//         trade_type: trade.tradeType, // BUY or SELL
+//         info: {
+//           address: trade.mint,
+//         },
+//         chainSymbol: "SOL",
+//         tokens: trade.amount, // Number of tokens
+//         priceSOL: trade.priceSol,
+//         priceUSD: trade.priceUsd,        
+//         time: new Date(trade.tradeDate).toLocaleString(), // Trade timestamp
+//         type: trade.tradeType,
+//       };
+//     });
+//   };
+
+export const convertToHistory = (tradeHistory: any, solPrice: any): History[] => {
+  return tradeHistory
+    .sort((a: any, b: any) => new Date(b.tradeDate).getTime() - new Date(a.tradeDate).getTime()) // Sort latest first
+    .map((trade: any) => ({
+      token: trade.symbol,
+      trade_type: trade.tradeType, // BUY or SELL
+      info: {
+        address: trade.mint,
+      },
+      chainSymbol: "SOL",
+      tokens: trade.amount, // Number of tokens
+      priceSOL: trade.priceSol,
+      priceUSD: trade.priceUsd,
+      time: new Date(trade.tradeDate).toLocaleString(), // Trade timestamp
+      type: trade.tradeType,
+    }));
+};
+
   
 
 
