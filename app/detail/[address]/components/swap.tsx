@@ -12,7 +12,8 @@ interface SwapProps {
   address: string | undefined;
 }
 
-export default function Swap({ address }: SwapProps, tokenData:Object) {
+export default function Swap({ address }: SwapProps) {
+// export default function Swap({ address }: SwapProps, tokenData:any) {
   const { setUser } = useAppContext();
   const token = useToken();
   const user = useUser();
@@ -31,13 +32,13 @@ export default function Swap({ address }: SwapProps, tokenData:Object) {
     return currentToken ? currentToken.amount : 0;
   }, [data]);
 
-  useEffect(() => {
-    if(!tokenData){
-      setIsLoading(true)
-    } else{
-      setIsLoading(false)
-    }
-  }, [tokenData])
+  // useEffect(() => {
+  //   if(!tokenData){
+  //     setIsLoading(true)
+  //   } else{
+  //     setIsLoading(false)
+  //   }
+  // }, [tokenData])
   
   useEffect(()=>{
     setAmount(isBuy?1:0)
