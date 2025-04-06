@@ -6,6 +6,8 @@ import StatsCard from "./components/stats";
 import { API_URL } from "@/config";
 import { useEffect, useState } from "react";
 import { useWalletAssets } from "@/hooks/useWalletAssets";
+import { useFetchTokenDetails } from "@/hooks/useFetchTokenDetails";
+import { fetchTokenDetails } from "@/lib/api";
 
 export default function Page() {
 
@@ -89,6 +91,21 @@ const convertToHoldings = async (tokenStats: any, solPrice: number): Promise<Hol
       const totalSold = token.valueSoldUsd; // Total USD received from sold tokens
       const pnl = currentValue + totalSold - totalInvested;
       const pnlPercentage = totalInvested > 0 ? (pnl / totalInvested) * 100 : 0;
+      let pnll = 0;
+      let pnlperc = 0;
+
+      let positionData = (data?.tokenList.find((item:any) => item.mint === token.mint))
+
+        
+        
+      if (positionData) {
+        const currentValue = positionData.price * positionData.amount; // Market value of holdings
+        const totalInvested = positionData.invested; // Amount spent on purchase
+        const totalSold = positionData.sold; // Revenue from sold tokens
+      
+        pnll = (currentValue + totalSold) - totalInvested;
+        pnlperc = (pnll / totalInvested) * 100;
+      }
 
       try {
         const res = await fetch(`${API_URL}/price/${token.mint}`);
@@ -115,8 +132,8 @@ const convertToHoldings = async (tokenStats: any, solPrice: number): Promise<Hol
             token: token.tokensSold, // Total tokens sold
           },
           change: {
-            percentage: pnlPercentage,
-            amount: pnl,
+            percentage: pnlperc,
+            amount: pnll,
           },
           type: token.remainingTokens > 0 ? "Holding" : "Sold",
         };
@@ -166,18 +183,55 @@ function calculateTokenStats(trades: Trade[]): Record<string, TokenStats> {
           stats.valueSoldSol += priceSol;
           stats.remainingTokens -= amount;
       }
+     
 
       // Calculate remaining value
       stats.remainingValueUsd = (stats.remainingTokens / stats.tokensPurchased) * stats.totalInvestedUsd;
       stats.remainingValueSol = (stats.remainingTokens / stats.tokensPurchased) * stats.totalInvestedSol;
 
+
+      let positionData = (data?.tokenList.find((item:any) => item.mint === mint))
+
+      let pnl = 0;
+      let pnlperc = 0;
+        
+      if (positionData) {
+        const currentValue = positionData.price * positionData.amount; // Market value of holdings
+        const totalInvested = positionData.invested; // Amount spent on purchase
+        const totalSold = positionData.sold; // Revenue from sold tokens
+      
+        pnl = (currentValue + totalSold) - totalInvested;
+        pnlperc = (pnl / totalInvested) * 100;
+      }
+
       // Calculate Profit/Loss percentage
-      const totalReturns = stats.valueSoldUsd + stats.remainingValueUsd;
-      stats.pnlPercentage = ((totalReturns - stats.totalInvestedUsd) / stats.totalInvestedUsd) * 100;
+      // const totalReturns = stats.valueSoldUsd + stats.remainingValueUsd;
+      // stats.pnlPercentage = ((totalReturns - stats.totalInvestedUsd) / stats.totalInvestedUsd) * 100;
+      const totalReturns = pnl;
+      stats.pnlPercentage = pnlperc;
+      
+      // stats.pnlPercentage = calculateRealTimePNL(mint, stats.remainingTokens, stats.totalInvestedUsd);
   });
 
   return tokenStats;
 }
+
+// const calculateRealTimePNL = async (address:string, tokenAmount:Number, initialInvestment:Number) => {
+//   // Fetch token price and SOL price
+//   const tokenPrice = await fetchTokenDetails(address); // Token price in USD
+// console.log("tokenPrice")
+// console.log(tokenPrice)
+//   const solPrice = data.solPrice; // SOL price in USD
+
+//   // Calculate current value of your tokens in USD
+//   const currentTokenValueUSD:number = tokenAmount * tokenPrice;
+
+//   // Calculate PNL (Profit or Loss)
+//   const pnl:number = currentTokenValueUSD - initialInvestment;
+
+//   // Return the result (PNL)
+//   return pnl;
+// };
 
 function calculateOverallStats(tokenStats: Record<string, TokenStats>): OverallStats {
   let totalTradeVolume = 0;
