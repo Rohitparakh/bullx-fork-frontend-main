@@ -10,7 +10,7 @@ export default function Page() {
       <div className="pt-8 pb-4 grow h-screen flex flex-col">
         <SectionTitle
           name="PumpVision"
-          desc="Customized feeds of tokens for you."
+          desc=""
         />
         <div className="grow lg:overflow-hidden">
           <Memescope />

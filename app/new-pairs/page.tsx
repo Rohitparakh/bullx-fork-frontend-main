@@ -11,7 +11,7 @@ export default function Page() {
         <div className="pt-8 pb-4 flex flex-col gap-2 grow">
           <SectionTitle
             name="New Pairs"
-            desc="New token pairs in the last 24 hours."
+            desc=""
           />
           <NewPairsData />
         </div>

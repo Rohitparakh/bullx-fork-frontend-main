@@ -10,7 +10,7 @@ export default function Page() {
       <div className="pt-8 pb-4 grow h-screen flex flex-col gap-4">
         <SectionTitle
           name="Trending"
-          desc="Top 100 trending token pairs per transaction."
+          desc=""
         />
         <div className="h-[200vh] lg:h-full lg:overflow-hidden grow flex flex-col lg:flex-row gap-4">
         <TrendingData />
