@@ -183,7 +183,7 @@ export const fetchTokenImage = async (address: string | undefined) => {
 export const registerUser = async () => {
   try {
     const { data } = await axios.post(
-      `${API_URL}/auth/discord/callback`
+      `${API_URL}/api/auth/discord/callback`
     );
     return data;
   } catch (error) {
@@ -196,7 +196,7 @@ export const registerUser = async () => {
 export const login = async (id:string) => {
   try {
     const { data } = await axios.post(
-      `${API_URL}/auth/discord/callback`,
+      `${API_URL}/api/auth/discord/callback`,
       {
         id: id
       }
