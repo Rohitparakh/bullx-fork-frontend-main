@@ -18,7 +18,7 @@ export default function Memescope() {
   const { graduatedData } = usePumpGraduated();
   const gData: MemescopeItem[] = [...graduatedData];
   const router = useRouter();
-  const user = useUser();
+  const {user} = useUser();
   return (
     <div className="flex flex-col lg:grid grid-cols-3 gap-4 pb-6 h-full mt-6">
       <MemescopeColumn title="Newly created" data={cData} />

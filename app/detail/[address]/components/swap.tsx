@@ -16,7 +16,7 @@ export default function Swap({ address }: SwapProps) {
 // export default function Swap({ address }: SwapProps, tokenData:any) {
   const { setUser } = useAppContext();
   const token = useToken();
-  const user = useUser();
+  const {user, isLoadingUser}= useUser();
   const router = useRouter();
   const [amount, setAmount] = useState<number>(0);
   const [isBuy, setIsBuy] = useState<boolean>(true);

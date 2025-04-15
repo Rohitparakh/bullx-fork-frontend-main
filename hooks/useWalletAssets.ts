@@ -4,7 +4,7 @@ import { fetchWalletAssets } from "@/lib/api";
 import { useToken } from "./useToken";
 
 export const useWalletAssets = () => {
-  const user = useUser();
+  const {user} = useUser();
   const token = useToken();
   // console.log("user")
   // console.log(user)
