@@ -6,10 +6,11 @@ import { useToken } from "./useToken";
 export const useWalletAssets = () => {
   const user = useUser();
   const token = useToken();
-  // console.log(user?.prvKey)
+  // console.log("user")
+  // console.log(user)
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ["fetchWalletAssets", user?.prvKey],
-    queryFn: () => fetchWalletAssets(user?.prvKey),
+    queryKey: ["fetchWalletAssets", user?.id],
+    queryFn: () => fetchWalletAssets(user?.id),
     refetchInterval: 1000,
   });
 

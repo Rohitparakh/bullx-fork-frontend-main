@@ -56,11 +56,11 @@ export function DataTable<TData, TValue>({
       name: data?.info?.name,
     };
     setToken(token);
-    console.log(token)
+    // console.log(token)
     router.push(`/detail/${data.info.address}`);
   };
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className="grow rounded-xl border border-[#8c003e] bg-neutral-900/20 glass overflow-y-hidden">

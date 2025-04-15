@@ -39,7 +39,8 @@ export default function DashboardNav({
   innerClassName?: string;
   additionalButton?: React.ReactNode;
 }) {
-    const { privateKey, user, setPrivateKey, setPublicKey, setUser } = useAppContext();
+    const { user , setUser, id, setId } = useAppContext();
+    // const { privateKey, user, setPrivateKey, setPublicKey, setUser } = useAppContext();
     const { data, isLoading, refetch } = useWalletAssets();
     const router = useRouter();
     
@@ -50,16 +51,14 @@ export default function DashboardNav({
   }, [data])
   
   const logout = () =>{
-  setPrivateKey(undefined);
-  setPublicKey(undefined);
+    setId(undefined);
   setUser(undefined);
   
   // ✅ Save user data to localStorage
   if (typeof window !== "undefined") {
     try {
       localStorage.removeItem("user")
-      localStorage.removeItem("prvKey")
-      localStorage.removeItem("pubKey")
+      localStorage.removeItem("id")
     } catch (error) {
       console.error("Error removing user from localStorage:", error);
     }

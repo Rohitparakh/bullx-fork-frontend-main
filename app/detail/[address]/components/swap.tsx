@@ -45,14 +45,15 @@ export default function Swap({ address }: SwapProps) {
   },[isBuy])
 
   const trade = useCallback(async () => {
-    if (!user?.prvKey) return;
+    if (!user?.id) return;
     setIsTrading(true); // Disable button while trading
-    const result = await sendTrade(token?.mintAddress, amount, user?.prvKey, isBuy);
+    const result = await sendTrade(token?.mintAddress, amount, user?.id, isBuy);
     console.log("result")
     console.log(result)
-    // await refetch(); 
+    await refetch(); 
     setAmount(isBuy?1:0)
-    setIsTrading(false); // Enable button after refetch
+    setIsTrading(false);
+     // Enable button after refetch
     if(result.success){
       toast.success("Trade successful")
     } else{

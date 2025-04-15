@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_URL } from "@/config";
 import { toast } from "react-toastify";
 
-//Get the
+//Get the token details
 export const fetchTokenDetails = async (mintAddress: string | undefined) => {
   if (typeof mintAddress == "undefined") return null;
   try {
@@ -47,16 +47,16 @@ export const fetchNewPairs = async () => {
 export const sendTrade = async (
   mint: string | undefined,
   amount: number,
-  prvKey: string | undefined,
+  id: string | undefined,
   isBuy: boolean
 ): Promise<{ success: boolean; message?: string }> => {
-  console.log({ mint, amount, prvKey, isBuy });
+  console.log({ mint, amount, id, isBuy });
 
   try {
     const res = await axios.post(`${API_URL}/trade`, {
       mint,
       amount,
-      prvKey,
+      id,
       isBuy,
     });
 
@@ -105,11 +105,11 @@ export const sendTrade = async (
 // };
 
 export const fetchWalletAssets = async (
-  prvKey: string | undefined | null
+  id: string | undefined | null
 ) => {
   try {
     const res = await axios.post(`${API_URL}/wallet`, {
-      prvKey,
+      id,
     });
     if (res.data.success) { return res.data.data};
     return null;
@@ -183,7 +183,7 @@ export const fetchTokenImage = async (address: string | undefined) => {
 export const registerUser = async () => {
   try {
     const { data } = await axios.post(
-      `${API_URL}/user`
+      `${API_URL}/auth/discord/callback`
     );
     return data;
   } catch (error) {
@@ -193,12 +193,12 @@ export const registerUser = async () => {
 };
 
 //Get the
-export const login = async (prvKey:string) => {
+export const login = async (id:string) => {
   try {
     const { data } = await axios.post(
-      `${API_URL}/user`,
+      `${API_URL}/auth/discord/callback`,
       {
-        prvKey: prvKey
+        id: id
       }
     );
     return data;

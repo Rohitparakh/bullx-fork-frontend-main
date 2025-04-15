@@ -7,9 +7,11 @@ type Token = {
 };
 
 interface User {
-  pubKey?: string | null;
-  prvKey?: string | null;
-  solBalance?: number | null;
+  id:string;
+  username: string;
+  avatar: string;
+  email: string;
+  solBalance: number;
 }
 
 // Define the type of the context state
@@ -18,10 +20,12 @@ interface AppContextType {
   setToken: (value: Token ) => void;
   user: User | undefined;
   setUser: (value: User | undefined) => void;
-  privateKey: string | undefined;
-  setPrivateKey: (value: string | undefined) => void;
-  publicKey: string | undefined;
-  setPublicKey: (value: string | undefined) => void;
+  id: string | undefined;
+  setId: (value: string | undefined) => void;
+  // privateKey: string | undefined;
+  // setPrivateKey: (value: string | undefined) => void;
+  // publicKey: string | undefined;
+  // setPublicKey: (value: string | undefined) => void;
 }
 
 // Create context with default undefined value
@@ -37,8 +41,9 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   // Correctly define token type
   const [token, setToken] = useState<Token | undefined>(undefined);
-  const [privateKey, setPrivateKey] = useState<string | undefined>(undefined);
-  const [publicKey, setPublicKey] = useState<string | undefined>(undefined);
+  // const [privateKey, setPrivateKey] = useState<string | undefined>(undefined);
+  // const [publicKey, setPublicKey] = useState<string | undefined>(undefined);
+  const [id, setId] = useState<string | undefined>(undefined);
   const [user, setUser] = useState<User | undefined>(undefined);
 
   return (
@@ -46,12 +51,10 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       value={{
         token,
         setToken,
-        publicKey,
         user,
+        id,
+        setId,
         setUser,
-        setPublicKey,
-        privateKey,
-        setPrivateKey,
       }}
     >
       {children}
