@@ -29,7 +29,7 @@ export default function Page() {
   const [tokenAddress, setTokenAddress] = useState<string | undefined>("");
   const params = useParams();
   const router = useRouter();
-  const user = useUser();
+  const {user} = useUser();
   const ohlcData = useMemo<Array<any> | undefined>(
     () => filterOhlc(data),
     [data]
