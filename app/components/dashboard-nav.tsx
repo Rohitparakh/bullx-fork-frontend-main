@@ -106,10 +106,10 @@ export default function DashboardNav({
   ];
 
   return (
-    <div className={"hidden lg:block h-full py-4 w-64 " + className}>
+    <div className={"hidden lg:block h-[100vh] py-4 w-64 bg-black " + className}>
       <div
         className={
-          "rounded-3xl flex flex-col gap-8 h-[100vh] p-6 bg-neutral-950 glass border border-[#8c003e] " +
+          "rounded-3xl flex flex-col gap-8 h-[90vh] p-6 bg-neutral-950 glass border border-[#8c003e] " +
           innerClassName
         }
       >

@@ -1,7 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaDollarSign, FaSearch } from "react-icons/fa";
 import { display } from "../fonts";
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,19 @@ export default function SectionTitle({
   const [search, setSearch] = useState<string>("");
   const [balanceInput, setBalanceInput ] = useState<number | string | undefined>("");
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  
+    // Clean up on unmount
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
+  
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const isValid = isValidSolanaAddress(search);
@@ -93,7 +106,7 @@ export default function SectionTitle({
         {isMenuOpen && (
           <div className="z-10 h-full w-full fixed top-0 right-0 left-0">
             <DashboardNav
-              className="!py-0 !h-full !block !w-screen"
+              className="!py-0 !h-full !block !w-screen h-[90vh]"
               innerClassName="!rounded-none"
               additionalButton={
                 <Button
