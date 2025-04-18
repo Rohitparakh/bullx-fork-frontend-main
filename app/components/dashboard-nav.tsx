@@ -139,14 +139,14 @@ export default function DashboardNav({
           <div className="flex items-center gap-2 w-full justify-between">
             <Badge
               variant="secondary"
-              className="glass h-full px-4 py-1 text-nowrap w-full truncate"
+              className="glass h-full px-4 py-1 text-nowrap w-full truncate text-center justify-center"
             >
               {formatNumber(balance).value}
               {formatNumber(balance).unit} {currency}
             </Badge>
             <DropdownMenu>
               <DropdownMenuTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 gap-2 glass h-10 px-4 py-2 border dark:border-[#8c003e] dark:bg-[rgba(140,0,62,0.4)] dark:hover:bg-ton-blue-800/20 dark:hover:text-neutral-50 glass">
-                <IoSettingsSharp /> Options
+                <IoSettingsSharp />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="mx-12">
                 {/* <Link href="/referrals">

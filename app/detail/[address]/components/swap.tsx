@@ -50,10 +50,11 @@ export default function Swap({ address }: SwapProps) {
     const result = await sendTrade(token?.mintAddress, amount, user?.id, isBuy);
     console.log("result")
     console.log(result)
-    // await refetch(); 
-    if(!isLoading){
+    await refetch(); 
+    // if(!isLoading){
     setAmount(isBuy?1:0)
-    setIsTrading(false);}
+    setIsTrading(false);
+  // }
      // Enable button after refetch
     if(result.success){
       toast.success("Trade successful")
