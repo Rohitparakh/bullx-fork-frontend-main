@@ -56,7 +56,7 @@ export default function Page() {
         <div className="flex flex-col pt-8 pb-4  gap-2 grow h-[100vh] object-fill ">
           <div>
             {data?.data.logo != undefined &&
-            <Image
+            <img
               src={data?.data.logo}
               alt={data?.data.symbol}
               width={80}

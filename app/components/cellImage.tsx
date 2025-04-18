@@ -12,7 +12,7 @@ export default function CellImage({ address }: { address: string }) {
     : tokenImage;
 
   return (
-    <Image
+    <img
       src={image || "/image.png"}
       alt=""
       height={100}

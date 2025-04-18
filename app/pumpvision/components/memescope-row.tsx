@@ -48,7 +48,7 @@ export default function MemescopeRow({ datum }: { datum: MemescopeItem }) {
             trailColor: '#d6d6d6',
            
           })}>
-            <Image
+            <img
               src={tokenImage || "/image.png"}
               alt={datum.symbol}
               height={100}
