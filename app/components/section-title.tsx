@@ -37,7 +37,7 @@ export default function SectionTitle({
       document.body.style.overflow = 'auto';
     };
   }, [isMenuOpen]);
-  
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const isValid = isValidSolanaAddress(search);
@@ -75,6 +75,9 @@ export default function SectionTitle({
     }
   };
 
+  const closeMenu = ()=>{
+    setIsMenuOpen(false)
+  }
   return (
     <div>
       <div className="lg:hidden pb-4">
@@ -108,6 +111,7 @@ export default function SectionTitle({
             <DashboardNav
               className="!py-0 !h-full !block !w-screen h-[90vh]"
               innerClassName="!rounded-none"
+              closeMenu={closeMenu}
               additionalButton={
                 <Button
                   variant="outline"

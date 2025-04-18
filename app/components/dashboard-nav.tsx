@@ -34,10 +34,12 @@ export default function DashboardNav({
   className,
   innerClassName,
   additionalButton,
+  closeMenu
 }: {
   className?: string;
   innerClassName?: string;
   additionalButton?: React.ReactNode;
+  closeMenu: ()=>void;
 }) {
     const { user , setUser, id, setId } = useAppContext();
     // const { privateKey, user, setPrivateKey, setPublicKey, setUser } = useAppContext();
@@ -105,6 +107,17 @@ export default function DashboardNav({
     // },
   ];
 
+  const handleNav = (e:any)=>{
+    e.preventDefault();
+    console.log("handleNav")
+    console.log(e);
+    const href = (e.currentTarget as HTMLAnchorElement).href;
+    // console.log(e.nativeEvent.srcElement.formAction);    
+    closeMenu;
+    window.location.href=href;
+
+  }
+
   return (
     <div className={"hidden lg:block h-[100vh] py-4 w-64 bg-black " + className}>
       <div
@@ -124,7 +137,7 @@ export default function DashboardNav({
         <div className="flex flex-col gap-4 h-full justify-between">
           <div className="w-full flex flex-col gap-2">
             {navigation.map((n, i) => (
-              <Link prefetch={true} href={n.route} key={i} className="w-full">
+              <Link prefetch={true} href={n.route} key={i} className="w-full" onClick={handleNav}>
                 <Button
                   variant="ghost"
                   className="w-full !justify-start text-ton-blue-200 hover:!bg-ton-blue-800/20 hover:glass hover:!text-ton-blue-300 flex gap-2"
