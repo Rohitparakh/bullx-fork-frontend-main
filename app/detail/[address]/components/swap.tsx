@@ -50,16 +50,17 @@ export default function Swap({ address }: SwapProps) {
     const result = await sendTrade(token?.mintAddress, amount, user?.id, isBuy);
     console.log("result")
     console.log(result)
-    await refetch(); 
+    // await refetch(); 
+    if(!isLoading){
     setAmount(isBuy?1:0)
-    setIsTrading(false);
+    setIsTrading(false);}
      // Enable button after refetch
     if(result.success){
       toast.success("Trade successful")
     } else{
       toast.error("Error Occured!")
     }
-  }, [token, user, amount, isBuy]);
+  }, [token, user, amount, isBuy, isLoading]);
 
   return (
     <div className="md:w-80 w-full gap-2 mt-4 md:mt-0 md:mx-2 mb-2 box-border items-center rounded-3xl flex flex-col h-full p-6 bg-neutral-950 glass border border-[#8c003e] overflow-auto">

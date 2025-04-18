@@ -55,6 +55,7 @@ export default function Page() {
         <DashboardNav />
         <div className="flex flex-col pt-8 pb-4  gap-2 grow h-[100vh] object-fill ">
           <div>
+            {data?.data.logo != undefined &&
             <Image
               src={data?.data.logo}
               alt={data?.data.symbol}
@@ -62,6 +63,7 @@ export default function Page() {
               height={80}
               className="float-start  rounded-full "
             />
+            }
             <SectionTitle
               name={data?.data.name || ""}
               desc={`${data?.data.source?`This is the token traded in the ${data.data.source}`:""}`}
