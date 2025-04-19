@@ -17,6 +17,7 @@ import Image from "next/image";
 import { useFetchTokenImage } from "@/hooks/useFetchTokenImage";
 import { fetchTokenImage } from "@/lib/api";
 import { useFetchTokenData } from "@/hooks/useFetchTokenData";
+import { closeMenu } from "@/lib/utils";
 
 export default function Page() {
   const { token, setToken, setUser } = useAppContext();
@@ -52,7 +53,7 @@ export default function Page() {
   return (
     <div className={`relative h-screen`}>
       <main className="px-4 bg-background/20 lg:h-screen flex gap-4 glass z-10">
-        <DashboardNav closeMenu={()=>console.log("Close Menu log only")} />
+        <DashboardNav closeMenu={closeMenu} />
         <div className="flex flex-col pt-8 pb-4  gap-2 grow h-[100vh] object-fill ">
           <div>
             {data?.data.logo != undefined &&
