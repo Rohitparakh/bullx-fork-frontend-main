@@ -52,7 +52,7 @@ export default function Page() {
   return (
     <div className={`relative h-screen`}>
       <main className="px-4 bg-background/20 lg:h-screen flex gap-4 glass z-10">
-        <DashboardNav />
+        <DashboardNav closeMenu={()=>console.log("Close Menu log only")} />
         <div className="flex flex-col pt-8 pb-4  gap-2 grow h-[100vh] object-fill ">
           <div>
             {data?.data.logo != undefined &&
