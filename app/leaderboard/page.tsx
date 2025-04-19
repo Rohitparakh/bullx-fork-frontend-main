@@ -7,7 +7,7 @@ import TasksCard from "./components/tasks";
 export default function Page() {
   return (
     <main className="px-4 bg-background lg:h-screen flex gap-4 z-10 lg:overflow-y-hidden">
-      <DashboardNav />
+      <DashboardNav closeMenu={()=>console.log("Close Menu log only")}/>
       <div className="pt-8 pb-4 flex flex-col gap-4 grow">
         <SectionTitle
           name="Leaderboard"

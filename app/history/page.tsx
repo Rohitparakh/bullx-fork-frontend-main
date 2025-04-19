@@ -7,7 +7,7 @@ import History from "./components/history";
 export default function Page() {
   return (
     <main className="px-4 bg-background lg:h-screen lg:flex gap-4">
-      <DashboardNav />
+      <DashboardNav closeMenu={()=>console.log("Close Menu log only")} />
       <div className="pt-8 pb-4 grow h-screen flex flex-col gap-4">
         <SectionTitle
           name="History"
