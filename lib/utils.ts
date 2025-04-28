@@ -139,7 +139,3 @@ export const getUserFromLocalStorage = () => {
   //   return null;
   // }
 };
-
-export const closeMenu = () => {
-  console.log("Close menu log")
-};
