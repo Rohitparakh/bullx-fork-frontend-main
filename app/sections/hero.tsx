@@ -20,12 +20,12 @@ export function Hero() {
         <div className="absolute top-0 right-0 p-4 flex gap-4">
           <div className="flex gap-1">
             <Link href="">
-              <Button variant="ghost" className="flex gap-2" size="sm">
+              <Button variant="outline" className="flex gap-2" size="sm">
                 <FaDiscord /> Discord
               </Button>
             </Link>
-            <Link href="">
-              <Button variant="ghost" className="flex " size="sm">
+            <Link href="https://x.com/ArcanumCult?t=H44Y02G0f2U1VxbjRO7OYA&s=09" target="_blank">
+              <Button variant="outline" className="flex" size="sm">
                 <RiTwitterXFill />
                 .com
               </Button>
