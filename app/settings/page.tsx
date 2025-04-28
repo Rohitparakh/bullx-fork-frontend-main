@@ -6,15 +6,13 @@ import CardsTabbed from "../leaderboard/components/tabs";
 import Settings from "./components/settings";
 // import { getUserFromLocalStorage } from "@/lib/utils";
 
-const closeMenu = () => {
-  console.log("Close menu log")
-};
+
 
 export default function Page() {
 
   return (
     <main className="px-4 bg-background lg:h-screen lg:flex gap-4">
-      <DashboardNav closeMenu={closeMenu}/>
+      <DashboardNav />
       <div className="pt-8 pb-4 grow h-screen flex flex-col gap-4">
         {/* <SectionTitle name="Transfer" desc="Withdraw or deposit funds." /> */}
         <SectionTitle name="Settings" desc=""/>

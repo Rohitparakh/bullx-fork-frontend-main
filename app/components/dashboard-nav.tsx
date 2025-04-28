@@ -39,7 +39,7 @@ export default function DashboardNav({
   className?: string;
   innerClassName?: string;
   additionalButton?: React.ReactNode;
-  closeMenu: ()=>void;
+  closeMenu?: ()=>void;
 }) {
     const { user , setUser, id, setId } = useAppContext();
     // const { privateKey, user, setPrivateKey, setPublicKey, setUser } = useAppContext();
@@ -112,8 +112,8 @@ export default function DashboardNav({
     console.log("handleNav")
     console.log(e);
     const href = (e.currentTarget as HTMLAnchorElement).href;
-    // console.log(e.nativeEvent.srcElement.formAction);    
-    closeMenu;
+    // console.log(e.nativeEvent.srcElement.formAction);        
+    if(closeMenu)closeMenu;
     window.location.href=href;
 
   }

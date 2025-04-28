@@ -9,9 +9,7 @@ import { useWalletAssets } from "@/hooks/useWalletAssets";
 import { useFetchTokenDetails } from "@/hooks/useFetchTokenDetails";
 import { fetchTokenDetails } from "@/lib/api";
 
-const closeMenu = () => {
-  console.log("Close menu log")
-};
+
 
 export default function Page() {
 
@@ -303,7 +301,7 @@ useEffect(() => {
 
   return (
     <main className="px-4 bg-background lg:h-screen lg:flex gap-4">
-      <DashboardNav closeMenu={closeMenu} />
+      <DashboardNav  />
       <div className="pt-8 pb-4 grow h-screen flex flex-col gap-4">
         <SectionTitle
           name="Holdings"

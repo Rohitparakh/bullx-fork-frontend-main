@@ -5,14 +5,12 @@ import Leaderboard from "./components/leaderboard";
 import TasksCard from "./components/tasks";
 
 
-const closeMenu = () => {
-  console.log("Close menu log")
-};
+
 
 export default function Page() {
   return (
     <main className="px-4 bg-background lg:h-screen flex gap-4 z-10 lg:overflow-y-hidden">
-      <DashboardNav closeMenu={closeMenu}/>
+      <DashboardNav />
       <div className="pt-8 pb-4 flex flex-col gap-4 grow">
         <SectionTitle
           name="Leaderboard"
