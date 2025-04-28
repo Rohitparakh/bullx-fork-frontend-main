@@ -78,7 +78,7 @@ useEffect(() => {
 
 
   return (
-    <div className="py-4 overflow-hidden h-full">
+    <div className="pt-4 pb-1 overflow-hidden h-full">
       <div className="mb-6 px-4 flex gap-4 justify-between items-center">
         <div className="flex gap-4 h-full items-center">
           <div>
