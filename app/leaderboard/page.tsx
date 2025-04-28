@@ -3,8 +3,11 @@ import SectionTitle from "../components/section-title";
 import StatsCard from "./components/stats";
 import Leaderboard from "./components/leaderboard";
 import TasksCard from "./components/tasks";
-import { closeMenu } from "@/lib/closeMenu";
 
+
+const closeMenu = () => {
+  console.log("Close menu log")
+};
 
 export default function Page() {
   return (

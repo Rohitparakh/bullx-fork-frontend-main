@@ -4,9 +4,11 @@ import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "../components/section-title";
 import CardsTabbed from "../leaderboard/components/tabs";
 import Settings from "./components/settings";
-import { getUserFromLocalStorage } from "@/lib/utils";
-import { closeMenu } from "@/lib/closeMenu";
+// import { getUserFromLocalStorage } from "@/lib/utils";
 
+const closeMenu = () => {
+  console.log("Close menu log")
+};
 
 export default function Page() {
 

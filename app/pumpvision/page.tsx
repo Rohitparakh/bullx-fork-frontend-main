@@ -2,8 +2,10 @@
 import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "../components/section-title";
 import Memescope from "./components/memescope";
-import { closeMenu } from "@/lib/closeMenu";
 
+const closeMenu = () => {
+  console.log("Close menu log")
+};
 
 export default function Page() {
   return (

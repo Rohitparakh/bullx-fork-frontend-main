@@ -8,8 +8,10 @@ import { useEffect, useState } from "react";
 import { useWalletAssets } from "@/hooks/useWalletAssets";
 import { useFetchTokenDetails } from "@/hooks/useFetchTokenDetails";
 import { fetchTokenDetails } from "@/lib/api";
-import { closeMenu } from "@/lib/closeMenu";
 
+const closeMenu = () => {
+  console.log("Close menu log")
+};
 
 export default function Page() {
 

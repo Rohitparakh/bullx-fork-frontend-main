@@ -2,9 +2,11 @@
 import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "../components/section-title";
 import History from "./components/history";
-import { closeMenu } from "@/lib/closeMenu";
 
 // import StatsCard from "./components/stats";
+const closeMenu = () => {
+  console.log("Close menu log")
+};
 
 export default function Page() {
   return (

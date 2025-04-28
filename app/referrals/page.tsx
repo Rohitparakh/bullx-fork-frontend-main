@@ -2,8 +2,11 @@ import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "@/app/components/section-title";
 import StatsCard from "./components/stats";
 import Payouts from "./components/payouts";
-import { closeMenu } from "@/lib/closeMenu";
 
+
+const closeMenu = () => {
+  console.log("Close menu log")
+};
 
 export default function Page() {
   return (

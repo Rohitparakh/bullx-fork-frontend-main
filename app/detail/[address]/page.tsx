@@ -17,10 +17,13 @@ import Image from "next/image";
 import { useFetchTokenImage } from "@/hooks/useFetchTokenImage";
 import { fetchTokenImage } from "@/lib/api";
 import { useFetchTokenData } from "@/hooks/useFetchTokenData";
-import { closeMenu } from "@/lib/closeMenu";
 
+const closeMenu = () => {
+  console.log("Close menu log")
+};
 
 export default function Page() {
+  
   const { token, setToken, setUser } = useAppContext();
   const { data, isLoading, refetch } = useFetchTokenDetails();
   const { data:tokenData, isLoading:tokenDataisLoading, refetch:tokenDataRefetch } = useFetchTokenData();
