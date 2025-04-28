@@ -2,7 +2,8 @@
 import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "../components/section-title";
 import History from "./components/history";
-import { closeMenu } from "@/lib/utils";
+import { closeMenu } from "@/lib/closeMenu";
+
 // import StatsCard from "./components/stats";
 
 export default function Page() {

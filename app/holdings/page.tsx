@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 import { useWalletAssets } from "@/hooks/useWalletAssets";
 import { useFetchTokenDetails } from "@/hooks/useFetchTokenDetails";
 import { fetchTokenDetails } from "@/lib/api";
-import { closeMenu } from "@/lib/utils";
+import { closeMenu } from "@/lib/closeMenu";
+
 
 export default function Page() {
 

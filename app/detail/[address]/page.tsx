@@ -17,7 +17,8 @@ import Image from "next/image";
 import { useFetchTokenImage } from "@/hooks/useFetchTokenImage";
 import { fetchTokenImage } from "@/lib/api";
 import { useFetchTokenData } from "@/hooks/useFetchTokenData";
-import { closeMenu } from "@/lib/utils";
+import { closeMenu } from "@/lib/closeMenu";
+
 
 export default function Page() {
   const { token, setToken, setUser } = useAppContext();

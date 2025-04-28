@@ -5,7 +5,8 @@ import SectionTitle from "../components/section-title";
 import CardsTabbed from "../leaderboard/components/tabs";
 import Settings from "./components/settings";
 import { getUserFromLocalStorage } from "@/lib/utils";
-import { closeMenu } from "@/lib/utils";
+import { closeMenu } from "@/lib/closeMenu";
+
 
 export default function Page() {
 

@@ -2,7 +2,8 @@
 import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "@/app/components/section-title";
 import NewPairsData from "./components/new-pairs-data";
-import { closeMenu } from "@/lib/utils";
+import { closeMenu } from "@/lib/closeMenu";
+
 
 export default function Page() {
   return (

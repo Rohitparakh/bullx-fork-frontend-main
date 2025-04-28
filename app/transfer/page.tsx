@@ -3,7 +3,8 @@ import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "../components/section-title";
 import CardsTabbed from "../leaderboard/components/tabs";
 import History from "./components/history";
-import { closeMenu } from "@/lib/utils";
+import { closeMenu } from "@/lib/closeMenu";
+
 
 export default function Page() {
   return (

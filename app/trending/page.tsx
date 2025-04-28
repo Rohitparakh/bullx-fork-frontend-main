@@ -2,7 +2,8 @@
 import DashboardNav from "@/app/components/dashboard-nav";
 import SectionTitle from "@/app/components/section-title";
 import TrendingData from "./components/trending-data";
-import { closeMenu } from "@/lib/utils";
+import { closeMenu } from "@/lib/closeMenu";
+
 
 export default function Page() {
   return (
