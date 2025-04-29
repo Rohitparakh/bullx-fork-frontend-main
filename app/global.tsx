@@ -411,6 +411,8 @@ export function getPairColums(currency: string) {
       filterFn: "inNumberRange",
       cell: ({ row }) => {
         const vol: number = row.getValue("vol");
+        console.log("VOL",vol)
+        // if(vol == "0") return 0;
         return formatNumber(vol).combined;
       },
     },

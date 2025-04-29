@@ -9,39 +9,81 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatNumber(n: number, precision: number = 4) {
-  let s = ["", "K", "M", "B", "T", "P", "E", "Z", "Y", "R", "Q"];
+export function formatNumber(n: number | string | undefined | null, precision: number = 4) {
+  const s = ["", "K", "M", "B", "T", "P", "E", "Z", "Y", "R", "Q"];
 
-  if (n === 0) return { value: 0, unit: "", combined: "0" };
+  // Convert string to number if needed
+  const parsed = typeof n === "string" ? parseFloat(n) : n;
 
-  // Find the order of magnitude
-  let orderOfMagnitude = Math.floor(Math.log10(n));
+  // Handle invalid, null, or undefined input
+  if (typeof parsed !== "number" || isNaN(parsed) || !isFinite(parsed)) {
+    return { value: 0, unit: "", combined: "0" };
+  }
 
-  // Determine the index in the abbreviation array
-  let index = Math.floor(orderOfMagnitude / 3);
+  if (parsed === 0) return { value: 0, unit: "", combined: "0" };
 
-  // Calculate the abbreviated value
-  let factor = Math.pow(1000, index);
-  let abbreviatedValue = n / factor;
+  const isNegative = parsed < 0;
+  const abs = Math.abs(parsed);
 
-  // Adjust precision without rounding
+  const orderOfMagnitude = Math.floor(Math.log10(abs));
+  const index = Math.max(0, Math.floor(orderOfMagnitude / 3));
+  const factor = Math.pow(1000, index);
+
+  let abbreviatedValue = abs / factor;
   const precisionFactor = Math.pow(10, precision);
   abbreviatedValue = Math.round((abbreviatedValue + Number.EPSILON) * precisionFactor) / precisionFactor;
 
-  // Format the value and remove trailing zeros
-  let formattedValue = abbreviatedValue.toString();
-  if (formattedValue.indexOf('.') !== -1) {
-    // Remove unnecessary trailing zeros
-    formattedValue = formattedValue.replace(/(\.\d+?)0+$/, "$1").replace(/\.$/, "");
-  }
+  let formattedValue = abbreviatedValue.toString().replace(/(\.\d+?)0+$/, "$1").replace(/\.$/, "");
+  if (isNegative) formattedValue = `-${formattedValue}`;
 
-  // Append the abbreviation
   return {
     value: parseFloat(formattedValue),
-    unit: s[index],
-    combined: `${formattedValue}${s[index]}`,
+    unit: s[index] || "",
+    combined: `${formattedValue}${s[index] || ""}`,
   };
 }
+
+
+// export function formatNumber(n: number, precision: number = 4) {
+//   console.log("Starting format")
+//   console.log(n)
+//   let s = ["", "K", "M", "B", "T", "P", "E", "Z", "Y", "R", "Q"];
+
+//   if (n === 0) return { value: 0, unit: "", combined: "0" };
+
+//   // Find the order of magnitude
+//   let orderOfMagnitude = Math.floor(Math.log10(n));
+
+//   // Determine the index in the abbreviation array
+//   let index = Math.floor(orderOfMagnitude / 3);
+
+//   // Calculate the abbreviated value
+//   let factor = Math.pow(1000, index);
+//   let abbreviatedValue = n / factor;
+
+//   // Adjust precision without rounding
+//   const precisionFactor = Math.pow(10, precision);
+//   abbreviatedValue = Math.round((abbreviatedValue + Number.EPSILON) * precisionFactor) / precisionFactor;
+
+//   // Format the value and remove trailing zeros
+//   let formattedValue = abbreviatedValue.toString();
+//   if (formattedValue.indexOf('.') !== -1) {
+//     // Remove unnecessary trailing zeros
+//     formattedValue = formattedValue.replace(/(\.\d+?)0+$/, "$1").replace(/\.$/, "");
+//   }
+
+//   console.log("Finishing format",{
+//     value: parseFloat(formattedValue),
+//     unit: s[index],
+//     combined: `${formattedValue}${s[index]}`,
+//   })
+//   // Append the abbreviation
+//   return {
+//     value: parseFloat(formattedValue),
+//     unit: s[index],
+//     combined: `${formattedValue}${s[index]}`,
+//   };
+// }
 
 
 // export function formatNumber(n: number, precision: number = 4) {

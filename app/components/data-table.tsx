@@ -85,7 +85,8 @@ export function DataTable<TData, TValue>({
         </TableHeader>
         <TableBody>
           {table?.getRowModel()?.rows?.length ? (
-            table.getRowModel().rows.map((row) => {
+            table.getRowModel().rows.map((row) => {                
+              // console.log("ROW: ",row)
               return (
                 <TableRow
                   className="hover:cursor-pointer"
@@ -96,6 +97,11 @@ export function DataTable<TData, TValue>({
                   }}
                 >
                   {row.getVisibleCells().map((cell) => {
+                    // if(row?.original?.vol == "0" && cell.id.includes('vol')) {
+                    //   console.log("RCV 1: ",cell.column.columnDef.cell)
+                    //   console.log("RCV 2: ",cell.getContext())
+                    
+                    // }
                     return(
                     <TableCell key={cell.id} className={cell.id.includes("auditResult")?"max-md:min-w-[200px]":""}>
                       {flexRender(
