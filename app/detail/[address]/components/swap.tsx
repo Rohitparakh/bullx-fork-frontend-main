@@ -48,8 +48,8 @@ export default function Swap({ address }: SwapProps) {
     if (!user?.id) return;
     setIsTrading(true); // Disable button while trading
     const result = await sendTrade(token?.mintAddress, amount, user?.id, isBuy);
-    console.log("result")
-    console.log(result)
+    // console.log("result")
+    // console.log(result)
     // await refetch(); 
     // if(!isLoading){
     setAmount(isBuy?1:0)

@@ -120,10 +120,10 @@ export const fetchWalletAssets = async (
 
 export const fetchTrendingData = async (timeframe: string | undefined | null)=>{
   try {
-    console.log("a")
+    // console.log("a")
     const res = await fetch(`${API_URL}/pumpfun/trending?timeframe=${timeframe}`);
     const data = await res.json();
-    console.log(data)
+    // console.log(data)
     return data.tokens.data;
   } catch (error) {
     console.log(error);

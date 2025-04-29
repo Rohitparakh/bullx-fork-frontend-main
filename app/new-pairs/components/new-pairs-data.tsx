@@ -34,8 +34,8 @@ export default function NewPairsData() {
   // const user = useUser();
   const { setUser, user } = useAppContext();
   const pairs: Pair[] = [...data];
-  console.log("New Pairs:");
-  console.log(pairs)
+  // console.log("New Pairs:");
+  // console.log(pairs)
   // Placeholder values
 
   // const date = new Date();

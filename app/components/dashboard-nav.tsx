@@ -109,8 +109,8 @@ export default function DashboardNav({
 
   const handleNav = (e:any)=>{
     e.preventDefault();
-    console.log("handleNav")
-    console.log(e);
+    // console.log("handleNav")
+    // console.log(e);
     const href = (e.currentTarget as HTMLAnchorElement).href;
     // console.log(e.nativeEvent.srcElement.formAction);        
     if(closeMenu)closeMenu;

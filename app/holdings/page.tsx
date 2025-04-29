@@ -284,12 +284,12 @@ useEffect(() => {
     const tokenStats = calculateTokenStats(tradeData);
     const overallStats = calculateOverallStats(tokenStats);
     setOverviewData(overallStats);
-    console.log("Holding Stats: ", tokenStats);
+    // console.log("Holding Stats: ", tokenStats);
     // console.log("Overall Stats: ", overallStats);
 
     try {
       const dataLocal = await convertToHoldings(tokenStats, data?.solPrice);
-      console.log("Converted Holdings Data:", dataLocal);
+      // console.log("Converted Holdings Data:", dataLocal);
       setTableData(dataLocal);
     } catch (error) {
       console.error("Error converting holdings:", error);

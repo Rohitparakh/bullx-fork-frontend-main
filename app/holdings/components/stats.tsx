@@ -15,7 +15,7 @@ import { useWalletAssets } from "@/hooks/useWalletAssets";
 // import { convertToHoldings } from "./holdings";
 
 export default function StatsCard({stats}:any) {
-  console.log(stats)
+  // console.log(stats)
   const { data, isLoading, refetch } = useWalletAssets();
   // console.log(data);
 

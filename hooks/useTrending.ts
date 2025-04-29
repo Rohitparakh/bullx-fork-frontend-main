@@ -3,7 +3,7 @@ import { fetchCreatedPumpVisionData, fetchTrendingData } from "@/lib/api";
 import { MemescopeItem } from "@/app/types";
 
 export const useTrending = (timeframe:string) => {
-  console.log("b")
+  // console.log("b")
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["fetchTrendingData"],
     queryFn: () => fetchTrendingData(timeframe),

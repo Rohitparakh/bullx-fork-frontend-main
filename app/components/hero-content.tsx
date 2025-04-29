@@ -111,7 +111,7 @@ export default function HeroContent() {
     const redirectUri = NEXT_REDIRECT_URI || "";
     const scope = "identify email";
     const authUrl = `https://discord.com/oauth2/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${scope}`;
-console.log(clientId)
+// console.log(clientId)
     window.location.href = authUrl;
   };
 
@@ -136,7 +136,7 @@ console.log(clientId)
     });
 
     newSocket.on("login", (data) => {
-      console.log("data.user", data);
+      // console.log("data.user", data);
       newSocket.emit("sendData", { clientId: data.id });
     
       if (data?.user) {

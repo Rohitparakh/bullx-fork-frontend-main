@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function CellImage({ address }: { address: string }) {
   const { tokenImage, isLoading }: any = useFetchTokenImage(address);
-  console.log({tokenImage, isLoading})
+  // console.log({tokenImage, isLoading})
   const image = isLoading
     ? "/image.png"
     : typeof tokenImage == undefined || tokenImage?.length == 0
