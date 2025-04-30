@@ -157,10 +157,16 @@ export default function DashboardNav({
               {formatNumber(balance).value}
               {formatNumber(balance).unit} {currency}
             </Badge>
+            <div 
+            className="cursor-pointer inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 gap-2 glass h-10 px-4 py-2 border dark:border-[#8c003e] dark:bg-[rgba(140,0,62,0.4)] dark:hover:bg-ton-blue-800/20 dark:hover:text-neutral-50 glass"
+              onClick={()=>{logout(); router.push("/") }}
+              >
+            <IoMdLogOut/>
+            </div>
             <DropdownMenu>
-              <DropdownMenuTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 gap-2 glass h-10 px-4 py-2 border dark:border-[#8c003e] dark:bg-[rgba(140,0,62,0.4)] dark:hover:bg-ton-blue-800/20 dark:hover:text-neutral-50 glass">
+              {/* <DropdownMenuTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 gap-2 glass h-10 px-4 py-2 border dark:border-[#8c003e] dark:bg-[rgba(140,0,62,0.4)] dark:hover:bg-ton-blue-800/20 dark:hover:text-neutral-50 glass">
                 <IoSettingsSharp />
-              </DropdownMenuTrigger>
+              </DropdownMenuTrigger> */}
               <DropdownMenuContent className="mx-12">
                 {/* <Link href="/referrals">
                   <DropdownMenuItem className="flex gap-2">
@@ -172,11 +178,11 @@ export default function DashboardNav({
                     <RiFundsFill /> Change Balance
                   </DropdownMenuItem>
                 </Link>
-                <Link href="/settings" prefetch={true}>
+                {/* <Link href="/settings" prefetch={true}>
                   <DropdownMenuItem className="flex gap-2">
                     <IoSettingsSharp /> Settings
                   </DropdownMenuItem>
-                </Link>
+                </Link> */}
                 {/* <DropdownMenuItem className="flex gap-2">
                   <IoDocumentText /> Documentation
                 </DropdownMenuItem> */}
