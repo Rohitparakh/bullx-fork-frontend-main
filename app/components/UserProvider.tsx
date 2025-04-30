@@ -11,7 +11,9 @@ export default function UserProvider({ children }: { children: React.ReactNode }
   useEffect(() => {
       if (!isLoadingUser && !user && window.location.pathname !== "/get-started" && window.location.pathname !== "/") {
         window.location.href = "/";
-      }      
+      }else if(user && window.location.pathname=="/"){
+        window.location.href ="/new-pairs"
+      }  
   }, [user,isLoadingUser]);
 
   useEffect(() => {
